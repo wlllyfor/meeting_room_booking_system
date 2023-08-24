@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, MiddlewareConsumer, NestModule } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { ConfigService } from '@nestjs/config';
@@ -14,6 +14,7 @@ import { RedisModule } from './redis/redis.module';
 import { EmailModule } from './email/email.module';
 import { LoginGuard } from './login.guard';
 import { PermissionGuard } from './permission.guard';
+// import { ValidateParamsMiddleware } from './middleware/validate-params.middleware';
 
 @Module({
   imports: [
@@ -71,4 +72,9 @@ import { PermissionGuard } from './permission.guard';
     },
   ],
 })
+// export class AppModule implements NestModule {
+//   configure(consumer: MiddlewareConsumer) {
+//     consumer.apply(ValidateParamsMiddleware).forRoutes('*');
+//   }
+// }
 export class AppModule {}
